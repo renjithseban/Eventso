@@ -1,7 +1,7 @@
-using System.Web.Mvc;
 using Microsoft.Practices.Unity;
-using Unity.Mvc3;
 using System.Web.Http;
+using System.Web.Mvc;
+using Unity.Mvc3;
 
 namespace Resolver
 {
