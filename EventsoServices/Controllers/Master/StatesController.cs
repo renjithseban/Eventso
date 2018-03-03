@@ -25,8 +25,6 @@ namespace EventsoServices.Controllers.Master
             var statesEntities = stateServices.GetAllStates();
             if (statesEntities != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<StateEntity, StateViewModel>());
-                //var states = Mapper.Map<IEnumerable<StateEntity>, IEnumerable<StateViewModel>>(statesEntities);
                 return statesEntities;
             }
             return null;
@@ -39,8 +37,6 @@ namespace EventsoServices.Controllers.Master
             var stateEntity = stateServices.GetStateById(stateId);
             if (stateEntity != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<StateEntity, StateViewModel>());
-                //var state = Mapper.Map<StateEntity, StateViewModel>(stateEntity);
                 return stateEntity;
             }
             return null;
@@ -53,8 +49,6 @@ namespace EventsoServices.Controllers.Master
             var stateEntity = stateServices.GetStateByName(stateName);
             if (stateEntity != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<StateEntity, StateViewModel>());
-                //var state = Mapper.Map<StateEntity, StateViewModel>(stateEntity);
                 return stateEntity;
             }
             return null;
@@ -66,8 +60,6 @@ namespace EventsoServices.Controllers.Master
         {
             if (stateEntity != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<StateViewModel, StateEntity>());
-                //var stateEntity = Mapper.Map<StateViewModel, StateEntity>(state);
                 return stateServices.AddState(stateEntity);
             }
             return 0;
@@ -79,8 +71,6 @@ namespace EventsoServices.Controllers.Master
         {
             if (stateEntity != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<StateViewModel, StateEntity>());
-                //var stateEntity = Mapper.Map<StateViewModel, StateEntity>(state);
                 return stateServices.UpdateState(stateEntity);
             }
             return false;

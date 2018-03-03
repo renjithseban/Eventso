@@ -31,8 +31,6 @@ namespace EventsoServices.Controllers.Master
             {
                 if (roleEntities.Any())
                 {
-                    //Mapper.Initialize(cfg => cfg.CreateMap<RoleEntity, RoleViewModel>());
-                    //var roles = Mapper.Map<IEnumerable<RoleEntity>, IEnumerable<RoleViewModel>>(roleEntities);
                     return roleEntities;
                 }
             }
@@ -46,8 +44,6 @@ namespace EventsoServices.Controllers.Master
             var roleEntity = roleServices.GetRoleById(roleId);
             if (roleEntity != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<RoleEntity, RoleViewModel>());
-                //var role = Mapper.Map<RoleEntity, RoleViewModel>(roleEntity);
                 return roleEntity;
             }
             return null;
@@ -60,8 +56,6 @@ namespace EventsoServices.Controllers.Master
             var roleEntity = roleServices.GetRoleByName(roleName);
             if (roleEntity != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<RoleEntity, RoleViewModel>());
-                //var role = Mapper.Map<RoleEntity, RoleViewModel>(roleEntity);
                 return roleEntity;
             }
             return null;
@@ -73,8 +67,6 @@ namespace EventsoServices.Controllers.Master
         {
             if (role != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<RoleViewModel, RoleEntity>());
-                //var roleEntity = Mapper.Map<RoleViewModel, RoleEntity>(role);
                 return roleServices.AddRole(role);
             }
             return 0;
@@ -86,8 +78,6 @@ namespace EventsoServices.Controllers.Master
         {
             if (role != null)
             {
-                //Mapper.Initialize(cfg => cfg.CreateMap<RoleViewModel, RoleEntity>());
-                //var roleEntity = Mapper.Map<RoleViewModel, RoleEntity>(role);
                 return roleServices.UpdateRole(role);
             }
             return false;

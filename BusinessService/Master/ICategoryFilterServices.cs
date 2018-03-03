@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessService.Master
 {
-    interface ICategoryFilterServices : IDisposable
+    public interface ICategoryFilterServices : IDisposable
     {
         IEnumerable<CategoryFilterEntity> GetAllCategoryFilters();
 

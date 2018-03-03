@@ -49,6 +49,7 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Master\CategoriesController.cs" />
+    <Compile Include="Controllers\Master\CategoryFiltersController.cs" />
     <Compile Include="Controllers\Vendor\VendorsController.cs" />
     <Compile Include="Controllers\Master\DistrictsController.cs" />
     <Compile Include="Controllers\Master\RolesController.cs" />

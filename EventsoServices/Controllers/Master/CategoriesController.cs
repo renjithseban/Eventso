@@ -26,8 +26,6 @@ namespace EventsoServices.Controllers.Master
             {
                 if (categoryEntities.Any())
                 {
-                    //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<CategoryEntity, CategoryViewModel>(); });
-                    //var categories = Mapper.Map<IEnumerable<CategoryEntity>, IEnumerable<CategoryViewModel>>(categoryEntities);
                     return categoryEntities;
                 }
             }
@@ -41,8 +39,6 @@ namespace EventsoServices.Controllers.Master
             var categoryEntity = categoryServices.GetCategoryById(id);
             if (categoryEntity != null)
             {
-                //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<CategoryEntity, CategoryViewModel>(); });
-                //var category = Mapper.Map<CategoryEntity, CategoryViewModel>(categoryEntity);
                 return categoryEntity;
             }
             return null;
@@ -55,8 +51,6 @@ namespace EventsoServices.Controllers.Master
             var categoryEntity = categoryServices.GetCategoryByName(categoryName);
             if (categoryEntity != null)
             {
-                //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<CategoryEntity, CategoryViewModel>(); });
-                //var category = Mapper.Map<CategoryEntity, CategoryViewModel>(categoryEntity);
                 return categoryEntity;
             }
             return null;

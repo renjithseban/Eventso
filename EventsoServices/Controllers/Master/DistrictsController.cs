@@ -27,8 +27,6 @@ namespace EventsoServices.Controllers.Master
             {
                 if (districtEntities.Any())
                 {
-                    //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<DistrictEntity, DistrictViewModel>(); });
-                    //var districts = Mapper.Map<IEnumerable<DistrictEntity>, IEnumerable<DistrictViewModel>>(districtEntities);
                     return districtEntities;
                 }
             }
@@ -42,8 +40,6 @@ namespace EventsoServices.Controllers.Master
             var districtEntity = districtServices.GetDistrictById(id);
             if (districtEntity != null)
             {
-                //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<DistrictEntity, DistrictViewModel>(); });
-                //var district = Mapper.Map<DistrictEntity, DistrictViewModel>(districtEntity);
                 return districtEntity;
             }
             return null;
@@ -57,8 +53,6 @@ namespace EventsoServices.Controllers.Master
             var districtEntity = districtServices.GetDistrictByName(districtName);
             if (districtEntity != null)
             {
-                //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<DistrictEntity, DistrictViewModel>(); });
-                //var district = Mapper.Map<DistrictEntity, DistrictViewModel>(districtEntity);
                 return districtEntity;
             }
             return null;
@@ -71,8 +65,6 @@ namespace EventsoServices.Controllers.Master
             var districtEntity = districtServices.GetDistrictByStateName(stateName);
             if (districtEntity != null)
             {
-                //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<DistrictEntity, DistrictViewModel>(); });
-                //var district = Mapper.Map<IEnumerable<DistrictEntity>, IEnumerable<DistrictViewModel>>(districtEntity);
                 return districtEntity;
             }
             return null;
@@ -85,8 +77,6 @@ namespace EventsoServices.Controllers.Master
             var districtEntity = districtServices.GetDistrictByStateId(id);
             if (districtEntity != null)
             {
-                //Mapper.Initialize(cfg => { cfg.CreateMissingTypeMaps = true; cfg.CreateMap<DistrictEntity, DistrictViewModel>(); });
-                //var district = Mapper.Map<IEnumerable<DistrictEntity>, IEnumerable<DistrictViewModel>>(districtEntity);
                 return districtEntity;
             }
             return null;
