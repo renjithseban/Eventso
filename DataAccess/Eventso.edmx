@@ -1,0 +1,1773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Eventso_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar(max)" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryDescription" Type="varchar(max)" />
+          <Property Name="ParentCategoryId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CategoryFilter">
+          <Key>
+            <PropertyRef Name="CategoryFilterId" />
+          </Key>
+          <Property Name="CategoryFilterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="FilterName" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="OfficeAddresses">
+          <Key>
+            <PropertyRef Name="OfficeAddressId" />
+          </Key>
+          <Property Name="OfficeAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="OfficeLandmark" Type="varchar" MaxLength="500" />
+          <Property Name="OfficeStreet" Type="varchar" MaxLength="500" />
+          <Property Name="OfficeArea" Type="varchar" MaxLength="500" />
+          <Property Name="OfficeLocality" Type="varchar" MaxLength="500" />
+          <Property Name="OfficeCity" Type="varchar" MaxLength="200" />
+          <Property Name="OfficeDistrictId" Type="int" />
+          <Property Name="Pincode" Type="varchar" MaxLength="20" />
+          <Property Name="IsHeadOffice" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Testimonials">
+          <Key>
+            <PropertyRef Name="TestimonialId" />
+          </Key>
+          <Property Name="TestimonialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="Testimonials" Type="varchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Rating" Type="smallint" />
+          <Property Name="IsGenuine" Type="bit" />
+          <Property Name="ImageFolderPath" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="VendorCategories">
+          <Key>
+            <PropertyRef Name="VendorId" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="VendorEmail" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="VendorContactNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VendorWebsiteURI" Type="varchar" MaxLength="200" />
+          <Property Name="VendorFacebook" Type="varchar" MaxLength="200" />
+          <Property Name="VendorTwitter" Type="varchar" MaxLength="200" />
+          <Property Name="VendorDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="VendorOwnerUserId" Type="int" Nullable="false" />
+          <Property Name="VendorAlternateContactNo" Type="varchar" MaxLength="20" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Viewerships">
+          <Key>
+            <PropertyRef Name="ViewershipId" />
+          </Key>
+          <Property Name="ViewershipId" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="ViewDate" Type="datetime" />
+          <Property Name="ViewedBy" Type="int" />
+          <Property Name="HasSentMail" Type="bit" />
+          <Property Name="HasSentSMS" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Categories_Categories_ParentCategory">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="ParentCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryFilter_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="CategoryFilter" Type="Self.CategoryFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryFilter_CreatedUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CategoryFilter" Type="Self.CategoryFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryFilter_UpdatedUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CategoryFilter" Type="Self.CategoryFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_States_State">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeAddresses_Districts">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
+          <End Role="OfficeAddresses" Type="Self.OfficeAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="OfficeAddresses">
+              <PropertyRef Name="OfficeDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeAddresses_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="OfficeAddresses" Type="Self.OfficeAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OfficeAddresses">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeAddresses_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="OfficeAddresses" Type="Self.OfficeAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OfficeAddresses">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeAddresses_Vendors">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="1" />
+          <End Role="OfficeAddresses" Type="Self.OfficeAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="OfficeAddresses">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_States_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="States" Type="Self.States" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="States">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_States_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="States" Type="Self.States" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="States">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonial_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Testimonials" Type="Self.Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonial_Users_TestimonialUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Testimonials" Type="Self.Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonial_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Testimonials" Type="Self.Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonial_Vendors">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="1" />
+          <End Role="Testimonials" Type="Self.Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users1" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users1" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorCategory_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="VendorCategories" Type="Self.VendorCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="VendorCategories">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorCategory_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="VendorCategories" Type="Self.VendorCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VendorCategories">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorCategory_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="VendorCategories" Type="Self.VendorCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VendorCategories">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorCategory_Vendors">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="1" />
+          <End Role="VendorCategories" Type="Self.VendorCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="VendorCategories">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendors_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Vendors">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendors_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Vendors">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendors_Users_VendorOwner">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Vendors">
+              <PropertyRef Name="VendorOwnerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viewerships_Users_CreatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Viewerships" Type="Self.Viewerships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Viewerships">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viewerships_Users_UpdatedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Viewerships" Type="Self.Viewerships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Viewerships">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viewerships_Users_ViewedUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Viewerships" Type="Self.Viewerships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Viewerships">
+              <PropertyRef Name="ViewedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viewerships_Vendors">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
+          <End Role="Viewerships" Type="Self.Viewerships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Viewerships">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Eventso_ModelStoreContainer">
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="Master" store:Type="Tables" />
+          <EntitySet Name="CategoryFilter" EntityType="Self.CategoryFilter" Schema="Master" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="Master" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="Master" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="Master" store:Type="Tables" />
+          <EntitySet Name="OfficeAddresses" EntityType="Self.OfficeAddresses" Schema="Vendor" store:Type="Tables" />
+          <EntitySet Name="Testimonials" EntityType="Self.Testimonials" Schema="Vendor" store:Type="Tables" />
+          <EntitySet Name="VendorCategories" EntityType="Self.VendorCategories" Schema="Vendor" store:Type="Tables" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="Vendor" store:Type="Tables" />
+          <EntitySet Name="Viewerships" EntityType="Self.Viewerships" Schema="Vendor" store:Type="Tables" />
+          <AssociationSet Name="FK_Categories_Categories_ParentCategory" Association="Self.FK_Categories_Categories_ParentCategory">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Users_CreatedUser" Association="Self.FK_Categories_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Users_UpdatedUser" Association="Self.FK_Categories_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryFilter_Categories" Association="Self.FK_CategoryFilter_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryFilter_CreatedUsers" Association="Self.FK_CategoryFilter_CreatedUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryFilter_UpdatedUsers" Association="Self.FK_CategoryFilter_UpdatedUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_States_State" Association="Self.FK_Districts_States_State">
+            <End Role="States" EntitySet="States" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Users_CreatedUser" Association="Self.FK_Districts_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Users_UpdatedUser" Association="Self.FK_Districts_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeAddresses_Districts" Association="Self.FK_OfficeAddresses_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="OfficeAddresses" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeAddresses_Users_CreatedUser" Association="Self.FK_OfficeAddresses_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OfficeAddresses" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeAddresses_Users_UpdatedUser" Association="Self.FK_OfficeAddresses_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OfficeAddresses" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeAddresses_Vendors" Association="Self.FK_OfficeAddresses_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="OfficeAddresses" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Users_CreatedUser" Association="Self.FK_Roles_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Users_UpdatedUser" Association="Self.FK_Roles_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_States_Users_CreatedUser" Association="Self.FK_States_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="States" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_States_Users_UpdatedUser" Association="Self.FK_States_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="States" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonial_Users_CreatedUser" Association="Self.FK_Testimonial_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonial_Users_TestimonialUser" Association="Self.FK_Testimonial_Users_TestimonialUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonial_Users_UpdatedUser" Association="Self.FK_Testimonial_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonial_Vendors" Association="Self.FK_Testimonial_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_CreatedUser" Association="Self.FK_Users_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_UpdatedUser" Association="Self.FK_Users_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorCategory_Categories" Association="Self.FK_VendorCategory_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="VendorCategories" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorCategory_Users_CreatedUser" Association="Self.FK_VendorCategory_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VendorCategories" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorCategory_Users_UpdatedUser" Association="Self.FK_VendorCategory_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VendorCategories" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorCategory_Vendors" Association="Self.FK_VendorCategory_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="VendorCategories" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendors_Users_CreatedUser" Association="Self.FK_Vendors_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vendors" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendors_Users_UpdatedUser" Association="Self.FK_Vendors_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vendors" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendors_Users_VendorOwner" Association="Self.FK_Vendors_Users_VendorOwner">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vendors" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viewerships_Users_CreatedUser" Association="Self.FK_Viewerships_Users_CreatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Viewerships" EntitySet="Viewerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viewerships_Users_UpdatedUser" Association="Self.FK_Viewerships_Users_UpdatedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Viewerships" EntitySet="Viewerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viewerships_Users_ViewedUser" Association="Self.FK_Viewerships_Users_ViewedUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Viewerships" EntitySet="Viewerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viewerships_Vendors" Association="Self.FK_Viewerships_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Viewerships" EntitySet="Viewerships" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Eventso_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EventsoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="States" EntityType="Eventso_Model.State" />
+          <EntitySet Name="Categories" EntityType="Eventso_Model.Category" />
+          <AssociationSet Name="FK_Categories_Categories_ParentCategory" Association="Eventso_Model.FK_Categories_Categories_ParentCategory">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category1" EntitySet="Categories" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="Eventso_Model.User" />
+          <EntitySet Name="Districts" EntityType="Eventso_Model.District" />
+          <AssociationSet Name="FK_Categories_Users_CreatedUser1" Association="Eventso_Model.FK_Categories_Users_CreatedUser1">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Users_UpdatedUser1" Association="Eventso_Model.FK_Categories_Users_UpdatedUser1">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Users_CreatedUser" Association="Eventso_Model.FK_Districts_Users_CreatedUser">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_Users_UpdatedUser" Association="Eventso_Model.FK_Districts_Users_UpdatedUser">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_States_Users_CreatedUser1" Association="Eventso_Model.FK_States_Users_CreatedUser1">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_States_Users_UpdatedUser1" Association="Eventso_Model.FK_States_Users_UpdatedUser1">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_CreatedUser1" Association="Eventso_Model.FK_Users_Users_CreatedUser1">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="User11" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users_UpdatedUser1" Association="Eventso_Model.FK_Users_Users_UpdatedUser1">
+            <End Role="User1" EntitySet="Users" />
+            <End Role="User11" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_States_State" Association="Eventso_Model.FK_Districts_States_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <EntitySet Name="Vendors" EntityType="Eventso_Model.Vendor" />
+          <AssociationSet Name="FK_Vendors_Users_CreatedUser" Association="Eventso_Model.FK_Vendors_Users_CreatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendors_Users_UpdatedUser" Association="Eventso_Model.FK_Vendors_Users_UpdatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendors_Users_VendorOwner" Association="Eventso_Model.FK_Vendors_Users_VendorOwner">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="Eventso_Model.Role" />
+          <AssociationSet Name="FK_Roles_Users_CreatedUser" Association="Eventso_Model.FK_Roles_Users_CreatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Users_UpdatedUser" Association="Eventso_Model.FK_Roles_Users_UpdatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <EntitySet Name="Testimonials" EntityType="Eventso_Model.Testimonial" />
+          <AssociationSet Name="FK_Testimonial_Users_CreatedUser" Association="Eventso_Model.FK_Testimonial_Users_CreatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Testimonial" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonial_Users_TestimonialUser" Association="Eventso_Model.FK_Testimonial_Users_TestimonialUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Testimonial" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonial_Users_UpdatedUser" Association="Eventso_Model.FK_Testimonial_Users_UpdatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Testimonial" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonial_Vendors" Association="Eventso_Model.FK_Testimonial_Vendors">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Testimonial" EntitySet="Testimonials" />
+          </AssociationSet>
+          <EntitySet Name="VendorCategories" EntityType="Eventso_Model.VendorCategory" />
+          <AssociationSet Name="FK_VendorCategory_Users_CreatedUser" Association="Eventso_Model.FK_VendorCategory_Users_CreatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="VendorCategory" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorCategory_Users_UpdatedUser" Association="Eventso_Model.FK_VendorCategory_Users_UpdatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="VendorCategory" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorCategory_Categories" Association="Eventso_Model.FK_VendorCategory_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="VendorCategory" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorCategory_Vendors" Association="Eventso_Model.FK_VendorCategory_Vendors">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="VendorCategory" EntitySet="VendorCategories" />
+          </AssociationSet>
+          <EntitySet Name="Viewerships" EntityType="Eventso_Model.Viewership" />
+          <AssociationSet Name="FK_Viewerships_Users_CreatedUser" Association="Eventso_Model.FK_Viewerships_Users_CreatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Viewership" EntitySet="Viewerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viewerships_Users_UpdatedUser" Association="Eventso_Model.FK_Viewerships_Users_UpdatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Viewership" EntitySet="Viewerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viewerships_Users_ViewedUser" Association="Eventso_Model.FK_Viewerships_Users_ViewedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Viewership" EntitySet="Viewerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Viewerships_Vendors" Association="Eventso_Model.FK_Viewerships_Vendors">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Viewership" EntitySet="Viewerships" />
+          </AssociationSet>
+          <EntitySet Name="OfficeAddresses" EntityType="Eventso_Model.OfficeAddress" />
+          <AssociationSet Name="FK_OfficeAddresses_Users_CreatedUser" Association="Eventso_Model.FK_OfficeAddresses_Users_CreatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="OfficeAddress" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeAddresses_Users_UpdatedUser" Association="Eventso_Model.FK_OfficeAddresses_Users_UpdatedUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="OfficeAddress" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeAddresses_Districts" Association="Eventso_Model.FK_OfficeAddresses_Districts">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="OfficeAddress" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeAddresses_Vendors" Association="Eventso_Model.FK_OfficeAddresses_Vendors">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="OfficeAddress" EntitySet="OfficeAddresses" />
+          </AssociationSet>
+          <EntitySet Name="CategoryFilters" EntityType="Eventso_Model.CategoryFilter" />
+          <AssociationSet Name="FK_CategoryFilter_CategoryFilter" Association="Eventso_Model.FK_CategoryFilter_CategoryFilter">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryFilter_CreatedUsers" Association="Eventso_Model.FK_CategoryFilter_CreatedUsers">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryFilter_UpdatedUsers" Association="Eventso_Model.FK_CategoryFilter_UpdatedUsers">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryFilter_Categories" Association="Eventso_Model.FK_CategoryFilter_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryFilter_UpdatedUsers1" Association="Eventso_Model.FK_CategoryFilter_UpdatedUsers1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CategoryFilter" EntitySet="CategoryFilters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_States_Users_CreatedUser1" FromRole="State" ToRole="User1" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_States_Users_UpdatedUser1" FromRole="State" ToRole="User1" />
+          <NavigationProperty Name="Districts" Relationship="Eventso_Model.FK_Districts_States_State" FromRole="State" ToRole="District" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ParentCategoryId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="SubCategories" Relationship="Eventso_Model.FK_Categories_Categories_ParentCategory" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="ParentCategory" Relationship="Eventso_Model.FK_Categories_Categories_ParentCategory" FromRole="Category1" ToRole="Category" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_Categories_Users_CreatedUser1" FromRole="Category" ToRole="User1" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_Categories_Users_UpdatedUser1" FromRole="Category" ToRole="User1" />
+          <NavigationProperty Name="VendorCategories" Relationship="Eventso_Model.FK_VendorCategory_Categories" FromRole="Category" ToRole="VendorCategory" />
+          <NavigationProperty Name="CategoryFilters" Relationship="Eventso_Model.FK_CategoryFilter_CategoryFilter" FromRole="Category" ToRole="CategoryFilter" />
+        </EntityType>
+        <Association Name="FK_Categories_Categories_ParentCategory">
+          <End Type="Eventso_Model.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="ParentCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CategoryCreatedUser" Relationship="Eventso_Model.FK_Categories_Users_CreatedUser1" FromRole="User1" ToRole="Category" />
+          <NavigationProperty Name="CategoryUpdatedUser" Relationship="Eventso_Model.FK_Categories_Users_UpdatedUser1" FromRole="User1" ToRole="Category" />
+          <NavigationProperty Name="DistrictCreatedUser" Relationship="Eventso_Model.FK_Districts_Users_CreatedUser" FromRole="User1" ToRole="District" />
+          <NavigationProperty Name="DistrictUpdatedUser" Relationship="Eventso_Model.FK_Districts_Users_UpdatedUser" FromRole="User1" ToRole="District" />
+          <NavigationProperty Name="StateCreatedUser" Relationship="Eventso_Model.FK_States_Users_CreatedUser1" FromRole="User1" ToRole="State" />
+          <NavigationProperty Name="StateUpdatedUser" Relationship="Eventso_Model.FK_States_Users_UpdatedUser1" FromRole="User1" ToRole="State" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_Users_Users_CreatedUser1" FromRole="User1" ToRole="User11" />
+          <NavigationProperty Name="UserCreatedUser" Relationship="Eventso_Model.FK_Users_Users_CreatedUser1" FromRole="User11" ToRole="User1" />
+          <NavigationProperty Name="UserUpdatedUser" Relationship="Eventso_Model.FK_Users_Users_UpdatedUser1" FromRole="User1" ToRole="User11" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_Users_Users_UpdatedUser1" FromRole="User11" ToRole="User1" />
+          <NavigationProperty Name="VendorCreatedUser" Relationship="Eventso_Model.FK_Vendors_Users_CreatedUser" FromRole="User" ToRole="Vendor" />
+          <NavigationProperty Name="VendorUpdatedUser" Relationship="Eventso_Model.FK_Vendors_Users_UpdatedUser" FromRole="User" ToRole="Vendor" />
+          <NavigationProperty Name="VendorOwnerUser" Relationship="Eventso_Model.FK_Vendors_Users_VendorOwner" FromRole="User" ToRole="Vendor" />
+          <NavigationProperty Name="RoleCreatedUser" Relationship="Eventso_Model.FK_Roles_Users_CreatedUser" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="RoleUpdatedUser" Relationship="Eventso_Model.FK_Roles_Users_UpdatedUser" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="VendorTestimonialCreatedUser" Relationship="Eventso_Model.FK_Testimonial_Users_CreatedUser" FromRole="User" ToRole="Testimonial" />
+          <NavigationProperty Name="VendorTestimonialOwnerUser" Relationship="Eventso_Model.FK_Testimonial_Users_TestimonialUser" FromRole="User" ToRole="Testimonial" />
+          <NavigationProperty Name="VendorTestimonialUpdatedUser" Relationship="Eventso_Model.FK_Testimonial_Users_UpdatedUser" FromRole="User" ToRole="Testimonial" />
+          <NavigationProperty Name="VendorCategoryCreatedUser" Relationship="Eventso_Model.FK_VendorCategory_Users_CreatedUser" FromRole="User" ToRole="VendorCategory" />
+          <NavigationProperty Name="VendorCategoryUpdatedUser" Relationship="Eventso_Model.FK_VendorCategory_Users_UpdatedUser" FromRole="User" ToRole="VendorCategory" />
+          <NavigationProperty Name="ViewershipCreatedUser" Relationship="Eventso_Model.FK_Viewerships_Users_CreatedUser" FromRole="User" ToRole="Viewership" />
+          <NavigationProperty Name="ViewershipUpdatedUser" Relationship="Eventso_Model.FK_Viewerships_Users_UpdatedUser" FromRole="User" ToRole="Viewership" />
+          <NavigationProperty Name="ViewershipViewedUser" Relationship="Eventso_Model.FK_Viewerships_Users_ViewedUser" FromRole="User" ToRole="Viewership" />
+          <NavigationProperty Name="OfficeAddressCreatedUser" Relationship="Eventso_Model.FK_OfficeAddresses_Users_CreatedUser" FromRole="User" ToRole="OfficeAddress" />
+          <NavigationProperty Name="OfficeAddressUpdatedUser" Relationship="Eventso_Model.FK_OfficeAddresses_Users_UpdatedUser" FromRole="User" ToRole="OfficeAddress" />
+          <NavigationProperty Name="CategoryFilters" Relationship="Eventso_Model.FK_CategoryFilter_CreatedUsers" FromRole="User" ToRole="CategoryFilter" />
+          <NavigationProperty Name="CategoryFilter" Relationship="Eventso_Model.FK_CategoryFilter_UpdatedUsers" FromRole="User" ToRole="CategoryFilter" />
+          <NavigationProperty Name="CategoryFilters1" Relationship="Eventso_Model.FK_CategoryFilter_UpdatedUsers1" FromRole="User" ToRole="CategoryFilter" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_Districts_Users_CreatedUser" FromRole="District" ToRole="User1" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_Districts_Users_UpdatedUser" FromRole="District" ToRole="User1" />
+          <NavigationProperty Name="State" Relationship="Eventso_Model.FK_Districts_States_State" FromRole="District" ToRole="State" />
+          <NavigationProperty Name="VendorOffice" Relationship="Eventso_Model.FK_OfficeAddresses_Districts" FromRole="District" ToRole="OfficeAddress" />
+        </EntityType>
+        <Association Name="FK_Categories_Users_CreatedUser1">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Users_UpdatedUser1">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Users_CreatedUser">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_Users_UpdatedUser">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_States_Users_CreatedUser1">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_States_Users_UpdatedUser1">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_CreatedUser1">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.User" Role="User11" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User11">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users_UpdatedUser1">
+          <End Type="Eventso_Model.User" Role="User1" Multiplicity="0..1" />
+          <End Type="Eventso_Model.User" Role="User11" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User1">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User11">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_States_State">
+          <End Type="Eventso_Model.State" Role="State" Multiplicity="1" />
+          <End Type="Eventso_Model.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorEmail" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorContactNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VendorWebsiteURI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFacebook" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorTwitter" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VendorOwnerUserId" Type="Int32" Nullable="false" />
+          <Property Name="VendorAlternateContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_Vendors_Users_CreatedUser" FromRole="Vendor" ToRole="User" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_Vendors_Users_UpdatedUser" FromRole="Vendor" ToRole="User" />
+          <NavigationProperty Name="VendorOwner" Relationship="Eventso_Model.FK_Vendors_Users_VendorOwner" FromRole="Vendor" ToRole="User" />
+          <NavigationProperty Name="Testimonials" Relationship="Eventso_Model.FK_Testimonial_Vendors" FromRole="Vendor" ToRole="Testimonial" />
+          <NavigationProperty Name="Categories" Relationship="Eventso_Model.FK_VendorCategory_Vendors" FromRole="Vendor" ToRole="VendorCategory" />
+          <NavigationProperty Name="Viewerships" Relationship="Eventso_Model.FK_Viewerships_Vendors" FromRole="Vendor" ToRole="Viewership" />
+          <NavigationProperty Name="OfficeAddresses" Relationship="Eventso_Model.FK_OfficeAddresses_Vendors" FromRole="Vendor" ToRole="OfficeAddress" />
+        </EntityType>
+        <Association Name="FK_Vendors_Users_CreatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendors_Users_UpdatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendors_Users_VendorOwner">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="1" />
+          <End Type="Eventso_Model.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="VendorOwnerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_Roles_Users_CreatedUser" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_Roles_Users_UpdatedUser" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Roles_Users_CreatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Users_UpdatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="TestimonialId" />
+          </Key>
+          <Property Name="TestimonialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="Testimonials" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Rating" Type="Int16" />
+          <Property Name="IsGenuine" Type="Boolean" />
+          <Property Name="ImageFolderPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_Testimonial_Users_CreatedUser" FromRole="Testimonial" ToRole="User" />
+          <NavigationProperty Name="TestimonialOwnerUser" Relationship="Eventso_Model.FK_Testimonial_Users_TestimonialUser" FromRole="Testimonial" ToRole="User" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_Testimonial_Users_UpdatedUser" FromRole="Testimonial" ToRole="User" />
+          <NavigationProperty Name="Vendor" Relationship="Eventso_Model.FK_Testimonial_Vendors" FromRole="Testimonial" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_Testimonial_Users_CreatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Testimonial" Role="Testimonial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Testimonial">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonial_Users_TestimonialUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Testimonial" Role="Testimonial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Testimonial">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonial_Users_UpdatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Testimonial" Role="Testimonial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Testimonial">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonial_Vendors">
+          <End Type="Eventso_Model.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="Eventso_Model.Testimonial" Role="Testimonial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Testimonial">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VendorCategory">
+          <Key>
+            <PropertyRef Name="VendorId" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_VendorCategory_Users_CreatedUser" FromRole="VendorCategory" ToRole="User" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_VendorCategory_Users_UpdatedUser" FromRole="VendorCategory" ToRole="User" />
+          <NavigationProperty Name="Category" Relationship="Eventso_Model.FK_VendorCategory_Categories" FromRole="VendorCategory" ToRole="Category" />
+          <NavigationProperty Name="Vendor" Relationship="Eventso_Model.FK_VendorCategory_Vendors" FromRole="VendorCategory" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_VendorCategory_Users_CreatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.VendorCategory" Role="VendorCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VendorCategory">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorCategory_Users_UpdatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.VendorCategory" Role="VendorCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VendorCategory">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorCategory_Categories">
+          <End Type="Eventso_Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Eventso_Model.VendorCategory" Role="VendorCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="VendorCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorCategory_Vendors">
+          <End Type="Eventso_Model.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="Eventso_Model.VendorCategory" Role="VendorCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="VendorCategory">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Viewership">
+          <Key>
+            <PropertyRef Name="ViewershipId" />
+          </Key>
+          <Property Name="ViewershipId" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="ViewDate" Type="DateTime" Precision="3" />
+          <Property Name="ViewedBy" Type="Int32" />
+          <Property Name="HasSentMail" Type="Boolean" />
+          <Property Name="HasSentSMS" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_Viewerships_Users_CreatedUser" FromRole="Viewership" ToRole="User" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_Viewerships_Users_UpdatedUser" FromRole="Viewership" ToRole="User" />
+          <NavigationProperty Name="ViewedUser" Relationship="Eventso_Model.FK_Viewerships_Users_ViewedUser" FromRole="Viewership" ToRole="User" />
+          <NavigationProperty Name="Vendor" Relationship="Eventso_Model.FK_Viewerships_Vendors" FromRole="Viewership" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_Viewerships_Users_CreatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Viewership" Role="Viewership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Viewership">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viewerships_Users_UpdatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Viewership" Role="Viewership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Viewership">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viewerships_Users_ViewedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Viewership" Role="Viewership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Viewership">
+              <PropertyRef Name="ViewedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Viewerships_Vendors">
+          <End Type="Eventso_Model.Vendor" Role="Vendor" Multiplicity="0..1" />
+          <End Type="Eventso_Model.Viewership" Role="Viewership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Viewership">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OfficeAddress">
+          <Key>
+            <PropertyRef Name="OfficeAddressId" />
+          </Key>
+          <Property Name="OfficeAddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="OfficeLandmark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeStreet" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeArea" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeLocality" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeCity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeDistrictId" Type="Int32" />
+          <Property Name="Pincode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsHeadOffice" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_OfficeAddresses_Users_CreatedUser" FromRole="OfficeAddress" ToRole="User" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_OfficeAddresses_Users_UpdatedUser" FromRole="OfficeAddress" ToRole="User" />
+          <NavigationProperty Name="OfficeDistrict" Relationship="Eventso_Model.FK_OfficeAddresses_Districts" FromRole="OfficeAddress" ToRole="District" />
+          <NavigationProperty Name="Vendor" Relationship="Eventso_Model.FK_OfficeAddresses_Vendors" FromRole="OfficeAddress" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_OfficeAddresses_Users_CreatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.OfficeAddress" Role="OfficeAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OfficeAddress">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeAddresses_Users_UpdatedUser">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Eventso_Model.OfficeAddress" Role="OfficeAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OfficeAddress">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeAddresses_Districts">
+          <End Type="Eventso_Model.District" Role="District" Multiplicity="0..1" />
+          <End Type="Eventso_Model.OfficeAddress" Role="OfficeAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="OfficeAddress">
+              <PropertyRef Name="OfficeDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeAddresses_Vendors">
+          <End Type="Eventso_Model.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="Eventso_Model.OfficeAddress" Role="OfficeAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="OfficeAddress">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CategoryFilter">
+          <Key>
+            <PropertyRef Name="CategoryFilterId" />
+          </Key>
+          <Property Name="CategoryFilterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="FilterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Eventso_Model.FK_CategoryFilter_CategoryFilter" FromRole="CategoryFilter" ToRole="Category" />
+          <NavigationProperty Name="CreatedUser" Relationship="Eventso_Model.FK_CategoryFilter_CreatedUsers" FromRole="CategoryFilter" ToRole="User" />
+          <NavigationProperty Name="UpdatedUser" Relationship="Eventso_Model.FK_CategoryFilter_UpdatedUsers1" FromRole="CategoryFilter" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_CategoryFilter_CategoryFilter">
+          <End Type="Eventso_Model.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="Eventso_Model.CategoryFilter" Role="CategoryFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryFilter_CreatedUsers">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="1" />
+          <End Type="Eventso_Model.CategoryFilter" Role="CategoryFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryFilter_UpdatedUsers">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="1" />
+          <End Type="Eventso_Model.CategoryFilter" Role="CategoryFilter" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="CategoryFilterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryFilter_Categories">
+          <End Type="Eventso_Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Eventso_Model.CategoryFilter" Role="CategoryFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryFilter_UpdatedUsers1">
+          <End Type="Eventso_Model.User" Role="User" Multiplicity="1" />
+          <End Type="Eventso_Model.CategoryFilter" Role="CategoryFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CategoryFilter">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Eventso_ModelStoreContainer" CdmEntityContainer="EventsoEntities">
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="Eventso_Model.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Eventso_Model.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Eventso_Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="Eventso_Model.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="Eventso_Model.Vendor">
+              <MappingFragment StoreEntitySet="Vendors">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="VendorAlternateContactNo" ColumnName="VendorAlternateContactNo" />
+                <ScalarProperty Name="VendorOwnerUserId" ColumnName="VendorOwnerUserId" />
+                <ScalarProperty Name="VendorDescription" ColumnName="VendorDescription" />
+                <ScalarProperty Name="VendorTwitter" ColumnName="VendorTwitter" />
+                <ScalarProperty Name="VendorFacebook" ColumnName="VendorFacebook" />
+                <ScalarProperty Name="VendorWebsiteURI" ColumnName="VendorWebsiteURI" />
+                <ScalarProperty Name="VendorContactNo" ColumnName="VendorContactNo" />
+                <ScalarProperty Name="VendorEmail" ColumnName="VendorEmail" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Eventso_Model.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testimonials">
+            <EntityTypeMapping TypeName="Eventso_Model.Testimonial">
+              <MappingFragment StoreEntitySet="Testimonials">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ImageFolderPath" ColumnName="ImageFolderPath" />
+                <ScalarProperty Name="IsGenuine" ColumnName="IsGenuine" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Testimonials" ColumnName="Testimonials" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="TestimonialId" ColumnName="TestimonialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorCategories">
+            <EntityTypeMapping TypeName="Eventso_Model.VendorCategory">
+              <MappingFragment StoreEntitySet="VendorCategories">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Viewerships">
+            <EntityTypeMapping TypeName="Eventso_Model.Viewership">
+              <MappingFragment StoreEntitySet="Viewerships">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="HasSentSMS" ColumnName="HasSentSMS" />
+                <ScalarProperty Name="HasSentMail" ColumnName="HasSentMail" />
+                <ScalarProperty Name="ViewedBy" ColumnName="ViewedBy" />
+                <ScalarProperty Name="ViewDate" ColumnName="ViewDate" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="ViewershipId" ColumnName="ViewershipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficeAddresses">
+            <EntityTypeMapping TypeName="Eventso_Model.OfficeAddress">
+              <MappingFragment StoreEntitySet="OfficeAddresses">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsHeadOffice" ColumnName="IsHeadOffice" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="OfficeDistrictId" ColumnName="OfficeDistrictId" />
+                <ScalarProperty Name="OfficeCity" ColumnName="OfficeCity" />
+                <ScalarProperty Name="OfficeLocality" ColumnName="OfficeLocality" />
+                <ScalarProperty Name="OfficeArea" ColumnName="OfficeArea" />
+                <ScalarProperty Name="OfficeStreet" ColumnName="OfficeStreet" />
+                <ScalarProperty Name="OfficeLandmark" ColumnName="OfficeLandmark" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OfficeAddressId" ColumnName="OfficeAddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryFilters">
+            <EntityTypeMapping TypeName="Eventso_Model.CategoryFilter">
+              <MappingFragment StoreEntitySet="CategoryFilter">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="FilterName" ColumnName="FilterName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryFilterId" ColumnName="CategoryFilterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Evento.Areas.Crew.Models.TestimonialViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CrewTestimonialId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CrewId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CrewName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Testimonial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestimonialUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsGenuine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageFolderPath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrewTestimonialId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrewId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrewName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Testimonial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestimonialUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsGenuine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageFolderPath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
